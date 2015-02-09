@@ -1,6 +1,10 @@
 flask-init
 ==========
 
+.. image:: https://pypip.in/v/flask-init/badge.svg
+    :target: https://pypi.python.org/pypi/flask-init/
+    :alt: Latest Version
+
 Generate `Flask` project.
 
 .. _Flask: http://flask.pocoo.org/
@@ -12,6 +16,12 @@ Installation
 .. sourcecode:: bash
 
    ~ $ python setup.py install
+   
+or can use pip
+
+.. sourcecode:: bash
+
+   ~ $ pip install flask-init
 
 
 Quick start
