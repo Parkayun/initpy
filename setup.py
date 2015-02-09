@@ -1,0 +1,45 @@
+"""
+flask-init
+----------
+Generate Flask project.
+"""
+
+from os import path
+from setuptools import setup
+
+long_description = open(
+    path.join(
+        path.dirname(__file__),
+        'README.rst'
+    )
+).read()
+
+setup(
+    name='flask-init',
+    version='0.1',
+    url='https://github.com/Parkayun/flask-init',
+    license='BSD',
+    author='Ayun Park',
+    author_email='iamparkayun@gmail.com',
+    description='Generate Flask project',
+    long_description=long_description,
+    packages=['flask_init'],
+    platforms='any',
+    classifiers=[
+        'License :: OSI Approved :: BSD License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: Implementation :: PyPy',
+    ],
+    entry_points={
+        'console_scripts': [
+            'flask-init=flask_init.run:main',
+        ],
+    },
+)
