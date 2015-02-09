@@ -14,7 +14,7 @@ def create_folder(_folder_path, _exception):
     os.mkdir(_folder_path)
 
 
-def get_result_and_create_assets(_proj_path):
+def get_result_and_create_assets(_app_path, _module):
     result = []
 
     data = (
@@ -24,10 +24,20 @@ def get_result_and_create_assets(_proj_path):
 
     for folder, exception in data:
         try:
-            create_folder(os.path.join(_proj_path, folder), exception)
+            create_folder(os.path.join(_app_path, folder), exception)
         except exception:
             error = folder.title() + " folder create skipped (alreay exists)"
             results.append(error)
+
+    template_path = os.path.join(_app_path, "templates")
+    create_file(os.path.join(template_path, "base.html"), base_html_template)
+
+    try:
+        create_folder(os.path.join(template_path, _module), 
+                TemplateModuleAlreadyExists)
+    except TemplateModuleAreadyExists:
+        error = 'Template "'+_module+'" folder create skipped (already exists)'
+        results.append(error)
 
     return result
 
@@ -42,17 +52,17 @@ def get_result_and_create_module(_app_path, module):
     except ModulePathAlreadyExists:
         result.append("Module folder create skipped (already exists)")
 
-    create_py(os.path.join(module_path, "__init__.py"), 
+    create_file(os.path.join(module_path, "__init__.py"), 
             module_init_template.substitute(module=module))
-    create_py(os.path.join(module_path, "views.py"), blank_template)
-    create_py(os.path.join(module_path, "models.py"), blank_template)
+    create_file(os.path.join(module_path, "views.py"), blank_template)
+    create_file(os.path.join(module_path, "models.py"), blank_template)
 
     return result
 
 
-def create_py(py_path, content):
-    with open(py_path, 'w') as py:
-        py.write(content)
+def create_file(_file_path, content):
+    with open(_file_path, 'w') as _file:
+        _file.write(content)
 
 
 def check_name(_name):
@@ -67,7 +77,7 @@ def check_name(_name):
 def main():
     inputs = (
         ('name', 'Input project name (default is "flask_proj)": '),
-        ('module', 'Input module name (default is "base"): '),
+        ('module', 'Input module name (default is "common"): '),
     )
     values = {}
     result = []
@@ -79,7 +89,7 @@ def main():
         values['name'] = values.get('name') or "flask_proj"
         if not check_name(values['name']):
             raise InvalidProjectName
-        values['module'] = values.get('module') or "base"
+        values['module'] = values.get('module') or "common"
 
         proj_path = os.path.join(os.getcwd(), values['name'])
 
@@ -87,9 +97,8 @@ def main():
            raise ProjectPathAlreadyExists
 
         os.mkdir(proj_path)
-        create_py(os.path.join(proj_path, "manager.py"), manager_template)
+        create_file(os.path.join(proj_path, "manager.py"), manager_template)
 
-        result.extend(get_result_and_create_assets(proj_path))
         
         """
             Support Django style MVC
@@ -97,10 +106,12 @@ def main():
         """
         os.mkdir(os.path.join(proj_path, "app"))
         app_path = os.path.join(proj_path, "app")
-        create_py(os.path.join(app_path, "__init__.py"), 
+        create_file(os.path.join(app_path, "__init__.py"), 
                 app_init_template.substitute(module=values['module']))
 
         result.extend(get_result_and_create_module(app_path, values['module']))
+        result.extend(get_result_and_create_assets(app_path, values['module']))
+        
 
         if len(result) > 0:
             six.print_("\n".join(result))

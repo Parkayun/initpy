@@ -56,3 +56,17 @@ ${module}_blueprint = Blueprint('${module}', __name__)
 
 from . import views
 """.strip())
+
+
+base_html_template = """
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>{% block head %}</head>
+</html>
+<body>
+{% block body %}
+{% endblock %}
+</body>
+</html>
+""".strip()

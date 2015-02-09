@@ -15,4 +15,8 @@ class ModulePathAlreadyExists(Exception):
 
 
 class InvalidProjectName(Exception):
-    """Base Class for Invalid project name"""
+    """Base class for Invalid project name"""
+
+
+class TemplateModuleAlreadyExists(Exception):
+    """Base class for Template Module Already exists"""
