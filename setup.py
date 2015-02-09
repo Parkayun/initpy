@@ -16,7 +16,7 @@ long_description = open(
 
 setup(
     name='flask-init',
-    version='0.1',
+    version='0.1.1',
     url='https://github.com/Parkayun/flask-init',
     license='BSD',
     author='Ayun Park',
@@ -37,6 +37,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
+    install_requires=['six'],
     entry_points={
         'console_scripts': [
             'flask-init=flask_init.run:main',
