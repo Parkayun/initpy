@@ -76,7 +76,7 @@ def check_name(_name):
 
 def main():
     inputs = (
-        ('name', 'Input project name (default is "flask_proj)": '),
+        ('name', 'Input project name (default is "flask_proj"): '),
         ('module', 'Input module name (default is "common"): '),
     )
     values = {}
