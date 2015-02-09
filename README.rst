@@ -35,6 +35,8 @@ Quick start
    │       ├── base.html
    │       └── bar
    └── manager.py
+   ~ $ cd foo; pip install flask flask-script
+   ~ $ python manage.py runserver
 
 ToDo
 ----
