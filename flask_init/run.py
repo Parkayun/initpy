@@ -90,6 +90,8 @@ def main():
         if not check_name(values['name']):
             raise InvalidProjectName
         values['module'] = values.get('module') or "common"
+        if not check_name(values['module']):
+            raise InvalidModuleName
 
         proj_path = os.path.join(os.getcwd(), values['name'])
 
@@ -117,6 +119,12 @@ def main():
             six.print_("\n".join(result))
 
     except ProjectPathAlreadyExists:
-        six.print_("Path Already Exists, use another name!")
+        six.print_("\nPath Already Exists, use another name!")
     except InvalidProjectName:
-        six.print_("Invalid Project Name, use another name!")
+        six.print_("\nInvalid Project Name, use another name!")
+    except InvalidModuleName:
+        six.print_("\nInvalid Module Name, use another name!")
+
+
+if __name__ == '__main__':
+    main()

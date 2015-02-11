@@ -18,5 +18,9 @@ class InvalidProjectName(Exception):
     """Base class for Invalid project name"""
 
 
+class InvalidModuleName(Exception):
+    """Base class for Invalid module name"""
+
+
 class TemplateModuleAlreadyExists(Exception):
     """Base class for Template Module Already exists"""
