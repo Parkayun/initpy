@@ -16,7 +16,7 @@ long_description = open(
 
 setup(
     name='flask-init',
-    version='0.1.1',
+    version='0.1.2',
     url='https://github.com/Parkayun/flask-init',
     license='BSD',
     author='Ayun Park',
