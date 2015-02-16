@@ -32,6 +32,9 @@ Quick start
    ~ $ flask-init
    Input project name (default is "flask_proj"): foo
    Input module name (default is "common"): bar
+   
+   You can install package "pip install requirements/dev.txt"
+   You can run "python manage.py run"
    ~ $ tree foo
    foo
    ├── app
@@ -44,9 +47,11 @@ Quick start
    │   └── templates
    │       ├── base.html
    │       └── bar
-   └── manager.py
-   ~ $ cd foo; pip install flask flask-script
-   ~ $ python manage.py runserver
+   ├── manager.py
+   └── requirements
+       └── dev.txt
+   ~ $ cd foo; pip install requirements/dev.txt
+   ~ $ python manage.py run
 
 ToDo
 ----
