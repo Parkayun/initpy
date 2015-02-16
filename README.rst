@@ -33,7 +33,7 @@ Quick start
    Input project name (default is "flask_proj"): foo
    Input module name (default is "common"): bar
    
-   You can install package "pip install requirements/dev.txt"
+   You can install package "pip install -r requirements/dev.txt"
    You can run "python manage.py run"
    ~ $ tree foo
    foo
