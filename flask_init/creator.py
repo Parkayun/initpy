@@ -15,7 +15,7 @@ def name_validator(func):
 
         if func_args.get('validate'):
             _filter = "!@#$%^&*()-+=[]{}|\"'."
-            name = func_args.get('name').replace('.py', '').replace('.html', '')
+            name = func_args.get('name').replace('.py', '').replace('.html', '').replace('.txt', '')
 
             if len(list(set(list(name)).intersection(list(_filter)))) > 0 or name[0].isdigit():
                 exception = 'Invalid'+func.__name__.split('_')[1].title()+'Name'
@@ -27,6 +27,7 @@ def name_validator(func):
 
 class Creator(object):
 
+    errors = []
     root_path = None
 
     def __init__(self, root_path):
@@ -46,7 +47,7 @@ class Creator(object):
             folder_path = os.path.join(_path, name)
             os.mkdir(folder_path)
         except OSError:
-            pass
+            self.errors.append('Creating skipped: '+name+' already exists')
 
     def create_module(self, _path, name, template=blank_template):
         self.create_folder(_path, name)

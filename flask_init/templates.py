@@ -93,3 +93,8 @@ base_html_template = """
 </body>
 </html>
 """.strip()
+
+requirements_template = """
+Flask
+Flask-Script
+""".strip()
