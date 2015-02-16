@@ -15,7 +15,7 @@ def name_validator(func):
 
         if func_args.get('validate'):
             _filter = "!@#$%^&*()-+=[]{}|\"'."
-            name = func_args.get('name')
+            name = func_args.get('name').replace('.py', '')
 
             if len(list(set(list(name)).intersection(list(_filter)))) > 0 or name[0].isdigit():
                 exception = 'Invalid'+func.__name__.split('_')[1].title()+'Name'
