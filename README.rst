@@ -51,7 +51,7 @@ Quick start
    ├── manager.py
    └── requirements
        └── dev.txt
-   ~ $ cd foo; pip install requirements/dev.txt
+   ~ $ cd foo; pip install -r requirements/dev.txt
    ~ $ python manage.py run
 
 ToDo
