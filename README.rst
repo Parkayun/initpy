@@ -47,6 +47,7 @@ Quick start
    │   └── templates
    │       ├── base.html
    │       └── bar
+   │           └── index.html
    ├── manager.py
    └── requirements
        └── dev.txt
