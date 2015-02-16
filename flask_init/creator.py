@@ -15,7 +15,7 @@ def name_validator(func):
 
         if func_args.get('validate'):
             _filter = "!@#$%^&*()-+=[]{}|\"'."
-            name = func_args.get('name').replace('.py', '')
+            name = func_args.get('name').replace('.py', '').replace('.html', '')
 
             if len(list(set(list(name)).intersection(list(_filter)))) > 0 or name[0].isdigit():
                 exception = 'Invalid'+func.__name__.split('_')[1].title()+'Name'
@@ -48,8 +48,8 @@ class Creator(object):
         except OSError:
             pass
 
-    def create_module(self, name):
-        self.create_folder(self.root_path, name)
+    def create_module(self, _path, name, template=blank_template):
+        self.create_folder(_path, name)
 
-        module_path = os.path.join(self.root_path, name)
-        self.create_file(module_path, '__init__.py', blank_template, False)
+        module_path = os.path.join(_path, name)
+        self.create_file(module_path, '__init__.py', template, False)
