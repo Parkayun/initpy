@@ -29,13 +29,13 @@ manager_template = """
 # -*- coding: utf-8 -*-
 from flask.ext.script import Manager
 
-from werkzeug.contrib.fixers import ProxyFix
+# from werkzeug.contrib.fixers import ProxyFix
 
 from app import create_app
 
 
 app = create_app()
-app.wsgi_app = ProxyFix(app.wsgi_app)
+# app.wsgi_app = ProxyFix(app.wsgi_app)
 manager = Manager(app)
 
 @manager.command
@@ -58,11 +58,34 @@ from . import views
 """.strip())
 
 
+module_views_template = Template("""
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
+from flask import render_template
+
+from . import ${module}_blueprint
+
+@${module}_blueprint.route('/')
+def index():
+    return render_template('${module}/index.html')
+""".strip())
+
+
+module_html_template = """
+{% extends "base.html" %}
+
+{% block title %}flask-init{% endblock %}
+
+{% block body %}
+<h1>Hello Word</h1>
+{% endblock %}
+"""
+
 base_html_template = """
 <!DOCTYPE html>
 <html>
     <meta charset="utf-8">
-    <head>{% block head %}</head>
+    <head>{% block head %}{% endblock %}</head>
 </html>
 <body>
 {% block body %}
