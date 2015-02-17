@@ -79,7 +79,7 @@ module_html_template = """
 {% block body %}
 <h1>Hello Word</h1>
 {% endblock %}
-"""
+""".strip()
 
 base_html_template = """
 <!DOCTYPE html>
