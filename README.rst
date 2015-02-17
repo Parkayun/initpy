@@ -48,7 +48,7 @@ Quick start
    │       ├── base.html
    │       └── bar
    │           └── index.html
-   ├── manager.py
+   ├── manage.py
    └── requirements
        └── dev.txt
    ~ $ cd foo; pip install -r requirements/dev.txt
