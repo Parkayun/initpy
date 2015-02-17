@@ -65,6 +65,7 @@ from flask import render_template
 
 from . import ${module}_blueprint
 
+
 @${module}_blueprint.route('/')
 def index():
     return render_template('${module}/index.html')
