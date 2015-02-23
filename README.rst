@@ -4,6 +4,10 @@ flask-init
 .. image:: https://pypip.in/v/flask-init/badge.svg
     :target: https://pypi.python.org/pypi/flask-init/
     :alt: Latest Version
+.. image:: https://readthedocs.org/projects/flask-init/badge/
+    :alt: Documentation Status
+    :target: http://flask-init.readthedocs.org/en/latest/
+
 
 Generate `Flask` project.
 
