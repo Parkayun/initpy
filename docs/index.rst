@@ -82,6 +82,7 @@ And you can run after install requirement packages.
 Author and License
 ~~~~~~~~~~~~~~~~~~
 
-flask-init is written by `Ayun Park`_ and distributed under MIT License.
+flask-init is written by `Ayun Park`_ and distributed under `MIT License`_.
 
 .. _Ayun Park: http://www.parkayun.kr
+.. _MIT License: https://github.com/Parkayun/flask-init/blob/master/LICENSE
