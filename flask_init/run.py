@@ -35,10 +35,10 @@ def main():
     creator.create_file(os.path.join(proj_path, "requirements"), "dev.txt",
             requirements_template)
 
-    creator.create_module(proj_path, "app", 
+    creator.create_module(proj_path, "app",
             app_init_template.substitute(module=values['module']))
     app_path = os.path.join(proj_path, "app")
-    
+
     creator.create_folder(app_path, "templates")
     template_path = os.path.join(app_path, "templates")
     creator.create_file(template_path, "base.html", base_html_template)
@@ -47,7 +47,7 @@ def main():
         "index.html", module_html_template)
 
     creator.create_folder(app_path, "static")
-    creator.create_module(app_path, values['module'], 
+    creator.create_module(app_path, values['module'],
             module_init_template.substitute(module=values['module']))
     module_path = os.path.join(app_path, values['module'])
 
