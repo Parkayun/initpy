@@ -1,0 +1,17 @@
+language: python
+sudo: false
+python:
+  - 2.6
+  - 2.7
+  - 3.3
+  - 3.4
+  - pypy
+  - pypy3
+install:
+  - python setup.py install
+  - pip install pytest pytest-cov coveralls
+script: 
+  - py.test --cov flask_init --basetemp=temp tests
+after_success:
+  - rm -rf temp/
+  - coveralls
