@@ -57,7 +57,8 @@ def main():
 
     six.print_("\n".join(creator.errors))
 
-    six.print_("You can install package \"pip install -r requirements/dev.txt\"")
+    six.print_("You can install package "
+               "\"pip install -r requirements/dev.txt\"")
     six.print_("You can run \"python manage.py run\"")
 
 
