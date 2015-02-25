@@ -4,6 +4,12 @@ flask-init
 .. image:: https://pypip.in/v/flask-init/badge.svg
     :target: https://pypi.python.org/pypi/flask-init/
     :alt: Latest Version
+.. image:: https://secure.travis-ci.org/Parkayun/flask-init.svg?branch=master
+   :alt: Build Status
+   :target: https://travis-ci.org/Parkayun/flask-init
+.. image:: https://img.shields.io/coveralls/Parkayun/flask-init.svg
+   :alt: Coverage Status
+   :target: https://coveralls.io/r/Parkayun/flask-init
 
 Generate Flask Project
 
