@@ -7,6 +7,12 @@ flask-init
 .. image:: https://readthedocs.org/projects/flask-init/badge/
     :alt: Documentation Status
     :target: http://flask-init.readthedocs.org/en/latest/
+.. image:: https://secure.travis-ci.org/Parkayun/flask-init.svg?branch=master
+   :alt: Build Status
+   :target: https://travis-ci.org/Parkayun/flask-init
+.. image:: https://img.shields.io/coveralls/Parkayun/flask-init.svg
+   :alt: Coverage Status
+   :target: https://coveralls.io/r/Parkayun/flask-init
 
 
 Generate `Flask` project.
