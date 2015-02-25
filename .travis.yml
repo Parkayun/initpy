@@ -1,7 +1,6 @@
 language: python
 sudo: false
 python:
-  - 2.6
   - 2.7
   - 3.3
   - 3.4
@@ -13,5 +12,6 @@ install:
 script: 
   - py.test --cov flask_init --basetemp=temp tests
 after_success:
-  - rm -rf temp/
   - coveralls
+after_script:
+  - rm -rf temp/
