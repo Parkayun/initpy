@@ -6,7 +6,7 @@ import os
 
 from .exceptions import (InvalidFileName, InvalidFolderName,
                          RootPathDoesNotExists)
-from .templates import blank_template
+from .templates import blank
 
 
 def name_validator(func):
@@ -53,7 +53,7 @@ class Creator(object):
         except OSError:
             self.errors.append('Creating skipped: '+name+' already exists')
 
-    def create_module(self, _path, name, template=blank_template):
+    def create_module(self, _path, name, template=blank):
         self.create_folder(_path, name)
 
         module_path = os.path.join(_path, name)

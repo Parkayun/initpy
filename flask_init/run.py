@@ -4,9 +4,9 @@ import os
 
 import six
 
+import templates
 from .creator import Creator
-from .exceptions import *
-from .templates import *
+from .exceptions import InvalidFolderName
 
 
 def main():
@@ -27,33 +27,33 @@ def main():
     try:
         creator.create_folder(creator.root_path, values['name'])
         proj_path = os.path.join(creator.root_path, values['name'])
-        creator.create_file(proj_path, "manage.py", manager_template)
+        creator.create_file(proj_path, "manage.py", templates.manager)
     except InvalidFolderName:
         six.print_("\nInvalid Project Name, use another name!")
 
     creator.create_folder(proj_path, "requirements")
     creator.create_file(os.path.join(proj_path, "requirements"), "dev.txt",
-            requirements_template)
+            templates.requirements)
 
     creator.create_module(proj_path, "app",
-            app_init_template.substitute(module=values['module']))
+            templates.app_init.substitute(module=values['module']))
     app_path = os.path.join(proj_path, "app")
 
     creator.create_folder(app_path, "templates")
     template_path = os.path.join(app_path, "templates")
-    creator.create_file(template_path, "base.html", base_html_template)
+    creator.create_file(template_path, "base.html", templates.base_html)
     creator.create_folder(template_path, values['module'])
     creator.create_file(os.path.join(template_path, values['module']),
-        "index.html", module_html_template)
+        "index.html", templates.module_html)
 
     creator.create_folder(app_path, "static")
     creator.create_module(app_path, values['module'],
-            module_init_template.substitute(module=values['module']))
+            templates.module_init.substitute(module=values['module']))
     module_path = os.path.join(app_path, values['module'])
 
     creator.create_file(module_path, "views.py",
-            module_views_template.substitute(module=values['module']))
-    creator.create_file(module_path, "models.py", blank_template)
+            templates.module_views.substitute(module=values['module']))
+    creator.create_file(module_path, "models.py", templates.blank)
 
     six.print_("\n".join(creator.errors))
 

@@ -3,7 +3,7 @@
 from string import Template
 
 
-app_init_template = Template("""
+app_init = Template("""
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from flask import Flask
@@ -18,13 +18,13 @@ def create_app():
 """.strip())
 
 
-blank_template = """
+blank = """
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 """.strip()
 
 
-manager_template = """
+manager = """
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from flask.ext.script import Manager
@@ -47,7 +47,7 @@ if __name__ == "__main__":
 """.strip()
 
 
-module_init_template = Template("""
+module_init = Template("""
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from flask import Blueprint
@@ -58,7 +58,7 @@ from . import views
 """.strip())
 
 
-module_views_template = Template("""
+module_views = Template("""
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from flask import render_template
@@ -72,7 +72,7 @@ def index():
 """.strip())
 
 
-module_html_template = """
+module_html = """
 {% extends "base.html" %}
 
 {% block title %}flask-init{% endblock %}
@@ -82,7 +82,7 @@ module_html_template = """
 {% endblock %}
 """.strip()
 
-base_html_template = """
+base_html = """
 <!DOCTYPE html>
 <html>
     <meta charset="utf-8">
@@ -95,7 +95,7 @@ base_html_template = """
 </html>
 """.strip()
 
-requirements_template = """
+requirements = """
 Flask
 Flask-Script
 """.strip()
