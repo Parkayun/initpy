@@ -4,8 +4,9 @@ import functools
 import inspect
 import os
 
-from .exceptions import InvalidFileName, InvalidFolderName, RootPathDoesNotExists
-from .templates import blank_template
+from .exceptions import (InvalidFileName, InvalidFolderName,
+                         RootPathDoesNotExists)
+from .templates import blank
 
 
 def name_validator(func):
@@ -15,11 +16,14 @@ def name_validator(func):
 
         if func_args.get('validate'):
             _filter = "!@#$%^&*()-+=[]{}|\"'."
-            name = func_args.get('name').replace('.py', '').replace('.html', '').replace('.txt', '')
+            name = func_args.get('name').replace('.py', '')\
+                                        .replace('.html', '')\
+                                        .replace('.txt', '')
 
-            if len(list(set(list(name)).intersection(list(_filter)))) > 0 or name[0].isdigit():
-                exception = 'Invalid'+func.__name__.split('_')[1].title()+'Name'
-                raise globals()[exception]
+            if (len(list(set(list(name)).intersection(list(_filter)))) > 0
+                    or name[0].isdigit()):
+                title = func.__name__.split('_')[1].title()
+                raise globals()['Invalid' + title + 'Name']
 
         return func(*args, **kwargs)
     return wrapper
@@ -49,7 +53,7 @@ class Creator(object):
         except OSError:
             self.errors.append('Creating skipped: '+name+' already exists')
 
-    def create_module(self, _path, name, template=blank_template):
+    def create_module(self, _path, name, template=blank):
         self.create_folder(_path, name)
 
         module_path = os.path.join(_path, name)

@@ -26,7 +26,7 @@ Installation
 .. sourcecode:: bash
 
    ~ $ python setup.py install
-   
+
 or can use pip
 
 .. sourcecode:: bash
@@ -42,7 +42,7 @@ Quick start
    ~ $ flask-init
    Input project name (default is "flask_proj"): foo
    Input module name (default is "common"): bar
-   
+
    You can install package "pip install -r requirements/dev.txt"
    You can run "python manage.py run"
    ~ $ tree foo
@@ -78,4 +78,3 @@ ToDo
    │   ├── models
    │   │   ├── __init__.py
    │   │   └── bar.py
-
