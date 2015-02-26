@@ -20,9 +20,10 @@ def main():
     try:
         creator.create_folder(creator.root_path, name)
         proj_path = os.path.join(creator.root_path, name)
-        creator.create_file(proj_path, "manage.py", templates.manager)
     except InvalidFolderName:
         six.print_("\nInvalid Project Name, use another name!")
+    else:
+        creator.create_file(proj_path, "manage.py", templates.manager)
 
     creator.create_folder(proj_path, "requirements")
     creator.create_file(os.path.join(proj_path, "requirements"), "dev.txt",
