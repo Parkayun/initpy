@@ -27,10 +27,10 @@ def main():
 
     creator.create_folder(proj_path, "requirements")
     creator.create_file(os.path.join(proj_path, "requirements"), "dev.txt",
-            templates.requirements)
+                        templates.requirements)
 
     creator.create_module(proj_path, "app",
-            templates.app_init.substitute(module=module))
+                          templates.app_init.substitute(module=module))
     app_path = os.path.join(proj_path, "app")
 
     creator.create_folder(app_path, "templates")
@@ -38,15 +38,15 @@ def main():
     creator.create_file(template_path, "base.html", templates.base_html)
     creator.create_folder(template_path, module)
     creator.create_file(os.path.join(template_path, module),
-        "index.html", templates.module_html)
+                        "index.html", templates.module_html)
 
     creator.create_folder(app_path, "static")
     creator.create_module(app_path, module,
-            templates.module_init.substitute(module=module))
+                          templates.module_init.substitute(module=module))
     module_path = os.path.join(app_path, module)
 
     creator.create_file(module_path, "views.py",
-            templates.module_views.substitute(module=module))
+                        templates.module_views.substitute(module=module))
     creator.create_file(module_path, "models.py", templates.blank)
 
     six.print_("\n".join(creator.errors))
