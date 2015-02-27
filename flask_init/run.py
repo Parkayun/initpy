@@ -9,10 +9,18 @@ from .creator import Creator
 from .exceptions import InvalidFolderName
 
 
+def color_input(color, text):
+    return six.moves.input(color+text+'\033[0m')
+
+
+def color_print(color, text):
+    six.print_(color+text+'\033[0m')
+
+
 def main():
-    name = six.moves.input('Input project name (default is "flask_proj"): ')
+    name = color_input("\033[35m", "> Project name [flask_proj]: ")
     name = name or 'flask_proj'
-    module = six.moves.input('Input module name (default is "common"): ')
+    module = color_input("\033[35m", "> Module name [common]: ")
     module = module or 'common'
 
     creator = Creator(os.getcwd())
@@ -50,11 +58,13 @@ def main():
     creator.create_file(module_path, "views.py", module_view)
     creator.create_file(module_path, "models.py", templates.blank)
 
-    six.print_("\n".join(creator.errors))
+    color_print("\033[31m", "\n".join(creator.errors))
 
-    six.print_("You can install package "
-               "\"pip install -r requirements/dev.txt\"")
-    six.print_("You can run \"python manage.py run\"")
+    color_print("\033[34m", "Complete!")
+    six.print_("You can install package using ", end="")
+    color_print("\033[34m", "pip install -r requirements/dev.txt")
+    six.print_("You can run using ", end="")
+    color_print("\033[34m", "python manage.py run")
 
 
 if __name__ == '__main__':
