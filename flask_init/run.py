@@ -4,9 +4,9 @@ import os
 
 import six
 
-import templates
-from .creator import Creator
-from .exceptions import InvalidFolderName
+from flask_init import templates
+from flask_init.creator import Creator
+from flask_init.exceptions import InvalidFolderName
 
 
 def color_input(color, text):

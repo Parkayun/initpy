@@ -4,9 +4,9 @@ import functools
 import inspect
 import os
 
-from .exceptions import (InvalidFileName, InvalidFolderName,
+from flask_init.exceptions import (InvalidFileName, InvalidFolderName,
                          RootPathDoesNotExists)
-from .templates import blank
+from flask_init.templates import blank
 
 
 def name_validator(func):
