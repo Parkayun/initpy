@@ -40,11 +40,12 @@ Quick start
 .. sourcecode:: bash
 
    ~ $ flask-init
-   Input project name (default is "flask_proj"): foo
-   Input module name (default is "common"): bar
+   > Project name [flask_proj]: foo
+   > Module name [common]: bar
 
-   You can install package "pip install -r requirements/dev.txt"
-   You can run "python manage.py run"
+   Complete!
+   You can install package using pip install -r requirements/dev.txt
+   You can run using python manage.py run
    ~ $ tree foo
    foo
    ├── app
