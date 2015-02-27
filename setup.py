@@ -18,7 +18,7 @@ setup(
     name='flask-init',
     version='0.2.2',
     url='https://github.com/Parkayun/flask-init',
-    license='BSD',
+    license='MIT',
     author='Ayun Park',
     author_email='iamparkayun@gmail.com',
     description='Generate Flask project',
