@@ -1,7 +1,7 @@
 flask-init
 ==========
 
-.. image:: https://pypip.in/v/flask-init/badge.svg
+.. image:: https://pypip.in/v/flask-init/badge.svg?style=flat
     :target: https://pypi.python.org/pypi/flask-init/
     :alt: Latest Version
 .. image:: https://readthedocs.org/projects/flask-init/badge/
