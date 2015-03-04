@@ -18,10 +18,13 @@ def color_print(color, text):
 
 
 def main():
-    name = color_input("\033[35m", "> Project name [flask_proj]: ")
-    name = name or 'flask_proj'
-    module = color_input("\033[35m", "> Module name [common]: ")
-    module = module or 'common'
+    try:
+        name = color_input("\033[35m", "> Project name [flask_proj]: ")
+        name = name or 'flask_proj'
+        module = color_input("\033[35m", "> Module name [common]: ")
+        module = module or 'common'
+    except KeyboardInterrupt:
+        six.print_(""); return
 
     creator = Creator(os.getcwd())
 
