@@ -1,7 +1,7 @@
 """
-flask-init
-----------
-Generate Flask project.
+initpy
+------
+Generate Python project.
 """
 
 from os import path
@@ -15,16 +15,15 @@ long_description = open(
 ).read()
 
 setup(
-    name='flask-init',
-    version='0.2.2',
-    url='https://github.com/Parkayun/flask-init',
+    name='initpy',
+    version='0.1.0',
+    url='https://github.com/Parkayun/initpy',
     license='MIT',
     author='Ayun Park',
     author_email='iamparkayun@gmail.com',
-    description='Generate Flask project',
+    description='Generate Python project',
     long_description=long_description,
-    packages=['flask_init'],
-    platforms='any',
+    packages=['initpy'],
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
@@ -36,10 +35,9 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
-    install_requires=['six'],
     entry_points={
         'console_scripts': [
-            'flask-init=flask_init.run:main',
+            'init.py=initpy.run:main',
         ],
     },
 )
