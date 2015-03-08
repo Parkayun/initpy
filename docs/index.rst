@@ -1,6 +1,9 @@
 initpy
 ======
 
+.. image:: https://pypip.in/v/initpy/badge.svg?style=flat
+   :target: https://pypi.python.org/pypi/initpy/
+   :alt: Latest Version
 .. image:: https://readthedocs.org/projects/initpy/badge/?version=latest
    :target: https://readthedocs.org/projects/initpy/?badge=latest
    :alt: Documentation Status
