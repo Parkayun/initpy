@@ -1,21 +1,20 @@
 flask-init
 ==========
 
+This project merged to `initpy`_.
+----------------------------------
+
+.. _initpy: https://github.com/Parkayun/initpy
+
 .. image:: https://pypip.in/v/flask-init/badge.svg?style=flat
     :target: https://pypi.python.org/pypi/flask-init/
     :alt: Latest Version
 .. image:: https://readthedocs.org/projects/flask-init/badge/
     :alt: Documentation Status
     :target: http://flask-init.readthedocs.org/en/latest/
-.. image:: https://secure.travis-ci.org/Parkayun/flask-init.svg?branch=master
-   :alt: Build Status
-   :target: https://travis-ci.org/Parkayun/flask-init
-.. image:: https://img.shields.io/coveralls/Parkayun/flask-init.svg
-   :alt: Coverage Status
-   :target: https://coveralls.io/r/Parkayun/flask-init
 
 
-Generate `Flask` project.
+Generate `Flask`_ project.
 
 .. _Flask: http://flask.pocoo.org/
 
