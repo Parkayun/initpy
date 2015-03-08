@@ -68,4 +68,4 @@ Author and License
 initpy is written by `Ayun Park`_ and distributed under `MIT License`_.
 
 .. _Ayun Park: http://www.parkayun.kr
-.. _MIT License: https://github.com/Parkayun/flask-init/blob/master/LICENSE
+.. _MIT License: https://github.com/Parkayun/initpy/blob/master/LICENSE

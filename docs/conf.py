@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# flask-init documentation build configuration file, created by
+# initpy documentation build configuration file, created by
 # sphinx-quickstart on Mon Feb 23 17:21:56 2015.
 #
 # This file is execfile()d with the current directory set to its
@@ -44,7 +44,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'flask-init'
+project = u'initpy'
 copyright = u'2015, Ayun Park'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -104,7 +104,7 @@ html_theme = 'flask_small'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-html_theme_options = {'index_logo': '', 'github_fork': 'Parkayun/flask-init'}
+html_theme_options = {'index_logo': '', 'github_fork': 'Parkayun/initpy'}
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ['_themes']
@@ -177,7 +177,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'flask-initdoc'
+htmlhelp_basename = 'initpydoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -197,7 +197,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'flask-init.tex', u'flask-init Documentation',
+  ('index', 'initpy.tex', u'initpy Documentation',
    u'Ayun Park', 'manual'),
 ]
 
@@ -227,7 +227,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'flask-init', u'flask-init Documentation',
+    ('index', 'initpy', u'initpy Documentation',
      [u'Ayun Park'], 1)
 ]
 
@@ -241,8 +241,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'flask-init', u'flask-init Documentation',
-   u'Ayun Park', 'flask-init', 'One line description of project.',
+  ('index', 'initpy', u'initpy Documentation',
+   u'Ayun Park', 'initpy', 'One line description of project.',
    'Miscellaneous'),
 ]
 
