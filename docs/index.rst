@@ -22,7 +22,8 @@ Install latest works from `Github <https://github.com/Parkayun/initpy>`_.
 
 Usage
 ~~~~~
-* Create single Python file.
+Create single Python file.
+
 .. sourcecode:: bash
 
    ~ $ init.py foo.py
@@ -30,7 +31,8 @@ Usage
    #!/usr/bin/python
    # -*- coding:utf-8 -*-
 
-* Create Python Module.
+Create Python Module.
+
 .. sourcecode:: bash
    
    ~ $ init.py foo/
@@ -38,7 +40,8 @@ Usage
    foo/
    └── __init__.py
 
-* Create Flask project.
+Create Flask project.
+
 .. sourcecode:: bash
    
    ~ $ init.py -f bar
