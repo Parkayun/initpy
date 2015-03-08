@@ -1,6 +1,10 @@
 initpy
 ======
 
+.. image:: https://readthedocs.org/projects/initpy/badge/?version=latest
+   :target: https://readthedocs.org/projects/initpy/?badge=latest
+   :alt: Documentation Status
+
 Generate Python Project
 
 
