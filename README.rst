@@ -41,7 +41,7 @@ Quick start
 * Create Flask project.
 .. sourcecode:: bash
    
-   ~ $ init.py -f bar/
+   ~ $ init.py -f bar
    ~ $ tree bar/
    bar/
     ├── app
