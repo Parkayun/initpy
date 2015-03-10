@@ -69,6 +69,22 @@ Create Flask project.
     └── requirements
         └── dev.txt
 
+Create Tornado web project.
+
+.. sourcecode:: bash
+   
+   ~ $ init.py -tw bar
+   ~ $ tree bar/
+   bar/
+    ├── app.py
+    ├── handlers
+    │   ├── __init__.py
+    │   └── common.py
+    ├── requirements
+    │   └── dev.txt
+    └── urls.py
+
+
 Author and License
 ~~~~~~~~~~~~~~~~~~
 
