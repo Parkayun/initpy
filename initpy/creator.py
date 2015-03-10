@@ -92,7 +92,7 @@ class FlaskCreator(Creator):
     def create_requirements(self, _path):
         self.create_folder(_path, "requirements")
         self.create_file(os.path.join(_path, "requirements"), "dev.txt", 
-                        templates.requirements)
+                        templates.flask_requirements)
 
     def create_project(self, name, module):
         self.create_folder(self.root_path, name)
@@ -100,4 +100,27 @@ class FlaskCreator(Creator):
 
         self.create_file(project_path, "manage.py", templates.manager)
         self.create_app(project_path, module)
+        self.create_requirements(project_path)
+
+
+class TornadoCreator(Creator):
+
+    def create_handlers(self, _path, name):
+        self.create_module(_path, "handlers")
+        handlers_path = os.path.join(_path, "handlers")
+        self.create_file(handlers_path, name+".py", templates.tornado_handler)
+
+    def create_requirements(self, _path):
+        self.create_folder(_path, "requirements")
+        self.create_file(os.path.join(_path, "requirements"), "dev.txt", 
+                        templates.tornado_requirements)
+
+    def create_project(self, name, module):
+        self.create_folder(self.root_path, name)
+        project_path = os.path.join(self.root_path, name)
+        
+        self.create_file(project_path, "app.py", templates.tornado_app)
+        self.create_file(project_path, "urls.py", 
+                        templates.tornado_urls.substitute(module=module))
+
         self.create_requirements(project_path)

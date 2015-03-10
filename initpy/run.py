@@ -9,15 +9,27 @@ import argparse
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--flask', '-f', action='store_true')
-    # parser.add_argument('--tornado', '-t', action='store_true')
+    parser.add_argument('--tornado-web', '-tw', action='store_true')
     parser.add_argument('name', metavar='name', type=str)
     args = parser.parse_args()
 
     if args.name != '':
+        if args.flask and args.tornado_web:
+            from initpy.prompt import color_print
+            color_print('Please use one option', 'red')
+            parser.print_help()
+            return
+
         if args.flask:
             from initpy.creator import FlaskCreator
             creator = FlaskCreator(getcwd())
             creator.create_project(args.name, "common")
+
+        elif args.tornado_web:
+            from initpy.creator import TornadoCreator
+            creator = TornadoCreator(getcwd())
+            creator.create_project(args.name, "common")
+
         else:
             from initpy.creator import Creator
             creator = Creator(getcwd())
