@@ -23,12 +23,18 @@ def main():
         if args.flask:
             from initpy.creator import FlaskCreator
             creator = FlaskCreator(getcwd())
-            creator.create_project(args.name, "common")
+            from initpy.prompt import color_input
+            module = color_input('Please input base module name [common]: ', 
+                    'yellow') or "common"
+            creator.create_project(args.name, module)
 
         elif args.tornado_web:
             from initpy.creator import TornadoCreator
             creator = TornadoCreator(getcwd())
-            creator.create_project(args.name, "common")
+            from initpy.prompt import color_input
+            module = color_input('Please input base module name [common]: ', 
+                    'yellow') or "common"
+            creator.create_project(args.name, module)
 
         else:
             from initpy.creator import Creator

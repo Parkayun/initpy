@@ -19,7 +19,7 @@ def get_color_text(color, text):
 
 
 def color_input(text, color):
-    input(get_color_text(COLORS[color], text))
+    return input(get_color_text(COLORS[color], text))
 
 
 def color_print(text, color):
