@@ -123,4 +123,5 @@ class TornadoCreator(Creator):
         self.create_file(project_path, "urls.py", 
                         templates.tornado_urls.substitute(module=module))
 
+        self.create_handlers(project_path, module)
         self.create_requirements(project_path)
