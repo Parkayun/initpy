@@ -20,21 +20,27 @@ def main():
             parser.print_help()
             return
 
-        if args.flask:
-            from initpy.creator import FlaskCreator
-            creator = FlaskCreator(getcwd())
+        if args.flask or args.tornado_web:
+            end_message = "Complete!\nYou can install "
+            end_message += "\"pip install -r requirments/dev.txt\""
+
+            if args.flask:
+                end_message += "\nYou can run \"python manage.py run\""
+                from initpy.creator import FlaskCreator
+                creator = FlaskCreator(getcwd())
+            elif args.tornado_web:
+                end_message += "\nYou can run \"python app.py\""
+                from initpy.creator import TornadoCreator
+                creator = TornadoCreator(getcwd())
+
             from initpy.prompt import color_input
             module = color_input('Please input base module name [common]: ', 
                     'yellow') or "common"
             creator.create_project(args.name, module)
 
-        elif args.tornado_web:
-            from initpy.creator import TornadoCreator
-            creator = TornadoCreator(getcwd())
-            from initpy.prompt import color_input
-            module = color_input('Please input base module name [common]: ', 
-                    'yellow') or "common"
-            creator.create_project(args.name, module)
+            from initpy.prompt import color_print
+            color_print("\n".join(creator.errors), "red")
+            color_print(end_message, "blue")
 
         else:
             from initpy.creator import Creator
