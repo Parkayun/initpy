@@ -15,7 +15,7 @@ def main():
     args = parser.parse_args()
 
     if args.name != '':
-        if args.flask and args.tornado_web:
+        if args.flask and args.tornado_web and args.falcon:
             from initpy.prompt import color_print
             color_print('Please use one option', 'red')
             parser.print_help()
