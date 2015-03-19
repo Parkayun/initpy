@@ -4,7 +4,7 @@ import functools
 import inspect
 import os
 
-from initpy import templates
+from initpy.templates import blank, falcon, flask, tornado_web
 from initpy.exceptions import RootPathDoesNotExists
 
 
@@ -52,7 +52,7 @@ class Creator(object):
         except OSError:
             self.errors.append('Creating skipped: '+name+' already exists')
 
-    def create_module(self, _path, name, template=templates.blank):
+    def create_module(self, _path, name, template=blank.blank):
         self.create_folder(_path, name)
 
         module_path = os.path.join(_path, name)
@@ -63,7 +63,7 @@ class FlaskCreator(Creator):
 
     def create_app(self, _path, module):
         self.create_module(_path, "app", 
-                            templates.app_init.substitute(module=module))
+                           flask.app_init.substitute(module=module))
         app_path = os.path.join(_path, "app")
 
         self.create_folder(app_path, "static")
@@ -75,30 +75,30 @@ class FlaskCreator(Creator):
         module_path = os.path.join(_path, name)
 
         self.create_file(module_path, "__init__.py", 
-                        templates.module_init.substitute(module=name), False)
+                         flask.module_init.substitute(module=name), False)
         self.create_file(module_path, "views.py", 
-                        templates.module_views.substitute(module=name))
-        self.create_file(module_path, "models.py", templates.blank)
+                         flask.module_views.substitute(module=name))
+        self.create_file(module_path, "models.py", blank.blank)
 
     def create_templates(self, _path, module):
         self.create_folder(_path, "templates")
         template_path = os.path.join(_path, "templates")
 
-        self.create_file(template_path, "base.html", templates.base_html)
+        self.create_file(template_path, "base.html", flask.base_html)
         self.create_folder(template_path, module)
         self.create_file(os.path.join(template_path, module), "index.html",
-                        templates.module_html)
+                         flask.module_html)
 
     def create_requirements(self, _path):
         self.create_folder(_path, "requirements")
-        self.create_file(os.path.join(_path, "requirements"), "dev.txt", 
-                        templates.flask_requirements)
+        self.create_file(os.path.join(_path, "requirements"), "dev.txt",
+                         flask.requirements)
 
     def create_project(self, name, module):
         self.create_folder(self.root_path, name)
         project_path = os.path.join(self.root_path, name)
 
-        self.create_file(project_path, "manage.py", templates.manager)
+        self.create_file(project_path, "manage.py", flask.manager)
         self.create_app(project_path, module)
         self.create_requirements(project_path)
 
@@ -108,20 +108,69 @@ class TornadoCreator(Creator):
     def create_handlers(self, _path, name):
         self.create_module(_path, "handlers")
         handlers_path = os.path.join(_path, "handlers")
-        self.create_file(handlers_path, name+".py", templates.tornado_handler)
+        self.create_file(handlers_path, name+".py", tornado_web.tornado_handler)
 
     def create_requirements(self, _path):
         self.create_folder(_path, "requirements")
-        self.create_file(os.path.join(_path, "requirements"), "dev.txt", 
-                        templates.tornado_requirements)
+        self.create_file(os.path.join(_path, "requirements"), "dev.txt",
+                         tornado_web.requirements)
 
     def create_project(self, name, module):
         self.create_folder(self.root_path, name)
         project_path = os.path.join(self.root_path, name)
         
-        self.create_file(project_path, "app.py", templates.tornado_app)
-        self.create_file(project_path, "urls.py", 
-                        templates.tornado_urls.substitute(module=module))
+        self.create_file(project_path, "app.py", tornado_web.tornado_app)
+        self.create_file(project_path, "urls.py",
+                         tornado_web.tornado_urls.substitute(module=module))
 
         self.create_handlers(project_path, module)
+        self.create_requirements(project_path)
+
+
+class FalconCreator(Creator):
+
+    def create_app(self, _path, module):
+        args = dict(module=module, module_title=module.title())
+
+        self.create_module(_path, "app",
+                           falcon.app_init.safe_substitute(args))
+        app_path = os.path.join(_path, "app")
+
+        self.create_middleware(app_path)
+        self.create_models(app_path, module)
+        self.create_app_module(app_path, module)
+
+    def create_app_module(self, _path, name):
+        args = dict(module=name, module_title=name.title())
+
+        self.create_folder(_path, 'resources')
+        module_path = os.path.join(_path, 'resources')
+
+        self.create_file(module_path, "__init__.py",
+                         falcon.resource_init.safe_substitute(args), False)
+        self.create_file(module_path, "{}.py".format(name),
+                         falcon.resource_controller.safe_substitute(args))
+
+    def create_models(self, _path, name):
+        self.create_module(_path, "models")
+        models_path = os.path.join(_path, "models")
+        self.create_file(models_path, "__init__.py", blank.blank)
+        self.create_file(models_path, "{}.py".format(name), blank.blank)
+
+    def create_middleware(self, _path):
+        self.create_module(_path, "middleware")
+        middleware_path = os.path.join(_path, "middleware")
+        self.create_file(middleware_path, "__init__.py", blank.blank)
+
+    def create_requirements(self, _path):
+        self.create_folder(_path, "requirements")
+        self.create_file(os.path.join(_path, "requirements"), "dev.txt",
+                         falcon.requirements)
+
+    def create_project(self, name, module):
+        self.create_folder(self.root_path, name)
+        project_path = os.path.join(self.root_path, name)
+
+        self.create_file(project_path, "manage.py", falcon.manager)
+        self.create_app(project_path, module)
         self.create_requirements(project_path)

@@ -10,6 +10,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--flask', '-f', action='store_true')
     parser.add_argument('--tornado-web', '-tw', action='store_true')
+    parser.add_argument('--falcon', '-fc', action='store_true')
     parser.add_argument('name', metavar='name', type=str)
     args = parser.parse_args()
 
@@ -20,9 +21,9 @@ def main():
             parser.print_help()
             return
 
-        if args.flask or args.tornado_web:
+        if args.flask or args.tornado_web or args.falcon:
             end_message = "Complete!\nYou can install "
-            end_message += "\"pip install -r requirments/dev.txt\""
+            end_message += "\"pip install -r requirements/dev.txt\""
 
             if args.flask:
                 end_message += "\nYou can run \"python manage.py run\""
@@ -32,6 +33,10 @@ def main():
                 end_message += "\nYou can run \"python app.py\""
                 from initpy.creator import TornadoCreator
                 creator = TornadoCreator(getcwd())
+            elif args.falcon:
+                end_message += "\nYou can run \"python manage.py\""
+                from initpy.creator import FalconCreator
+                creator = FalconCreator(getcwd())
 
             from initpy.prompt import color_input
             module = color_input('Please input base module name [common]: ', 
