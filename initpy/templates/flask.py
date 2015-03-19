@@ -89,7 +89,7 @@ base_html = """
 </html>
 """.strip()
 
-flask_requirements = """
+requirements = """
 Flask
 Flask-Script
 """.strip()

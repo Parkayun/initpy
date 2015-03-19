@@ -92,7 +92,7 @@ class FlaskCreator(Creator):
     def create_requirements(self, _path):
         self.create_folder(_path, "requirements")
         self.create_file(os.path.join(_path, "requirements"), "dev.txt",
-                         flask.flask_requirements)
+                         flask.requirements)
 
     def create_project(self, name, module):
         self.create_folder(self.root_path, name)
@@ -113,7 +113,7 @@ class TornadoCreator(Creator):
     def create_requirements(self, _path):
         self.create_folder(_path, "requirements")
         self.create_file(os.path.join(_path, "requirements"), "dev.txt",
-                         tornado_web.tornado_requirements)
+                         tornado_web.requirements)
 
     def create_project(self, name, module):
         self.create_folder(self.root_path, name)

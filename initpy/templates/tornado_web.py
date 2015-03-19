@@ -66,6 +66,6 @@ url_patterns = [
 """.strip())
 
 
-tornado_requirements = """
+requirements = """
 tornado
 """.strip()
