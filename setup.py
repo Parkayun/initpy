@@ -16,7 +16,7 @@ long_description = open(
 
 setup(
     name='initpy',
-    version='0.2.0',
+    version='0.2.1',
     url='https://github.com/Parkayun/initpy',
     license='MIT',
     author='Ayun Park',
