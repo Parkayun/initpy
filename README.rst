@@ -83,3 +83,23 @@ Create Tornado web project.
     ├── requirements
     │   └── dev.txt
     └── urls.py
+
+Create Falcon project.
+
+.. sourcecode:: bash
+
+   ~ $ init.py -fc bar
+   ~ $ tree bar/
+   bar/
+    ├── app
+    │   ├── __init__.py
+    │   ├── resources
+    │   │   ├── __init__.py
+    │   │   └── common.py
+    │   ├── middleware
+    │   │   └── __init__.py
+    │   └── models
+    │       └── __init__.py
+    ├── manage.py
+    └── requirements
+        └── dev.txt
