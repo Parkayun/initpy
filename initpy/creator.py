@@ -4,7 +4,7 @@ import functools
 import inspect
 import os
 
-from initpy.templates import blank, flask, tornado_web
+from initpy.templates import blank, falcon, flask, tornado_web
 from initpy.exceptions import RootPathDoesNotExists
 
 
@@ -124,4 +124,53 @@ class TornadoCreator(Creator):
                          tornado_web.tornado_urls.substitute(module=module))
 
         self.create_handlers(project_path, module)
+        self.create_requirements(project_path)
+
+
+class FalconCreator(Creator):
+
+    def create_app(self, _path, module):
+        args = dict(module=module, module_title=module.title())
+
+        self.create_module(_path, "app",
+                           falcon.app_init.safe_substitute(args))
+        app_path = os.path.join(_path, "app")
+
+        self.create_middleware(app_path)
+        self.create_models(app_path, module)
+        self.create_app_module(app_path, module)
+
+    def create_app_module(self, _path, name):
+        args = dict(module=name, module_title=name.title())
+
+        self.create_folder(_path, 'resources')
+        module_path = os.path.join(_path, 'resources')
+
+        self.create_file(module_path, "__init__.py",
+                         falcon.resource_init.safe_substitute(args), False)
+        self.create_file(module_path, "{}.py".format(name),
+                         falcon.resource_controller.safe_substitute(args))
+
+    def create_models(self, _path, name):
+        self.create_module(_path, "models")
+        models_path = os.path.join(_path, "models")
+        self.create_file(models_path, "__init__.py", blank.blank)
+        self.create_file(models_path, "{}.py".format(name), blank.blank)
+
+    def create_middleware(self, _path):
+        self.create_module(_path, "middleware")
+        middleware_path = os.path.join(_path, "middleware")
+        self.create_file(middleware_path, "__init__.py", blank.blank)
+
+    def create_requirements(self, _path):
+        self.create_folder(_path, "requirements")
+        self.create_file(os.path.join(_path, "requirements"), "dev.txt",
+                         falcon.requirements)
+
+    def create_project(self, name, module):
+        self.create_folder(self.root_path, name)
+        project_path = os.path.join(self.root_path, name)
+
+        self.create_file(project_path, "manage.py", falcon.manager)
+        self.create_app(project_path, module)
         self.create_requirements(project_path)
