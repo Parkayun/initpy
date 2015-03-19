@@ -60,11 +60,11 @@ class ${module_title}Resource(object):
 
     def on_get(self, req, resp):
         resp.status = falcon.HTTP_200
-        resp.body = 'Server works!'
+        resp.body = 'Hello World'
 
     def on_post(self, req, resp):
         resp.status = falcon.HTTP_200
-        resp.body = 'Server works!'
+        resp.body = 'Hello World'
 """.strip())
 
 
