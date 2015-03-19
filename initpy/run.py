@@ -22,7 +22,7 @@ def main():
 
         if args.flask or args.tornado_web:
             end_message = "Complete!\nYou can install "
-            end_message += "\"pip install -r requirments/dev.txt\""
+            end_message += "\"pip install -r requirements/dev.txt\""
 
             if args.flask:
                 end_message += "\nYou can run \"python manage.py run\""
