@@ -5,4 +5,8 @@ import sys
 
 PY_VER = sys.version_info[0]
 
-input = raw_input if PY_VER == 2 else input
+if PY_VER == 2:
+    from StringIO import StringIO
+    input = raw_input
+else:
+    from io import StringIO
