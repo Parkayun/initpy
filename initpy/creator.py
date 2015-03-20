@@ -174,3 +174,43 @@ class FalconCreator(Creator):
         self.create_file(project_path, "manage.py", falcon.manager)
         self.create_app(project_path, module)
         self.create_requirements(project_path)
+
+
+def downloader(args):
+    url = args.download
+    from urllib2 import urlopen, HTTPError
+    try:
+        res = urlopen(url)
+    except HTTPError:
+        from initpy.prompt import color_print
+        color_print("Wrong downloadable url!", "red")
+        return
+    from initpy.compact import StringIO
+    from zipfile import ZipFile, BadZipfile
+    try:
+        template_zip = ZipFile(StringIO(res.read()))
+    except BadZipfile:
+        from initpy.prompt import color_print
+        color_print("initpy only support zip file!", "red")
+        return
+    from os import path, getcwd, mkdir
+    proj_path = path.join(getcwd(), args.name)
+    try:
+        mkdir(proj_path)
+    except OSError:
+        # Folder Exists
+        pass
+    zip_root = template_zip.namelist()[0]
+    for fn in template_zip.namelist()[1:]:
+        file_name = fn.replace(zip_root, '')
+        file_path = path.join(proj_path, file_name)
+        if file_path.endswith('/'):
+            try:
+                mkdir(file_path)
+            except OSError:
+                # Folder Exists
+                pass
+        else:
+            _file = open(file_path, 'w')
+            _file.write(template_zip.read(fn))
+            _file.close()

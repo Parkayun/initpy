@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 from __future__ import absolute_import
 
-from os import getcwd, path, mkdir
+from os import getcwd
 import argparse
 
 
@@ -11,12 +11,14 @@ def main():
     parser.add_argument('--flask', '-f', action='store_true')
     parser.add_argument('--tornado-web', '-tw', action='store_true')
     parser.add_argument('--falcon', '-fc', action='store_true')
+    parser.add_argument('--hosted', '-hd', type=str)
     parser.add_argument('--download', '-d', type=str)
     parser.add_argument('name', metavar='name', type=str)
     args = parser.parse_args()
 
     if args.name != '':
-        if args.flask and args.tornado_web and args.falcon and args.download:
+        if args.flask and args.tornado_web and args.falcon and args.download \
+                and args.hosted:
             from initpy.prompt import color_print
             color_print('Please use one option', 'red')
             parser.print_help()
@@ -49,42 +51,30 @@ def main():
             color_print(end_message, "blue")
 
         elif args.download:
-            url = args.download
+            from initpy.creator import downloader
+            downloader(args)
+
+        elif args.hosted:
+            url = 'https://raw.githubusercontent.com/Parkayun/initpy-index/'
+            url += 'master/%s/deatil.json' % args.hosted
             from urllib2 import urlopen, HTTPError
             try:
-                res = urlopen(url)
+                res = urlopen(url).read()
+                from json import loads
+                detail = loads(res.replace('\n', ''))
             except HTTPError:
                 from initpy.prompt import color_print
-                color_print("Wrong downloadable url!", "red")
+                color_print("Template not found!", "red")
                 return
-            from initpy.compact import StringIO
-            from zipfile import ZipFile, BadZipfile
-            try:
-                template_zip = ZipFile(StringIO(res.read()))
-            except BadZipfile:
+            except ValueError:
                 from initpy.prompt import color_print
-                color_print("initpy only support zip file!", "red")
+                color_print("This template have a error!", "red")
                 return
-            proj_path = path.join(getcwd(), args.name)
-            try:
-                mkdir(proj_path)
-            except OSError:
-                # Folder Exists
-                pass
-            zip_root = template_zip.namelist()[0]
-            for fn in template_zip.namelist()[1:]:
-                file_name = fn.replace(zip_root, '')
-                file_path = path.join(proj_path, file_name)
-                if file_path.endswith('/'):
-                    try:
-                        mkdir(file_path)
-                    except OSError:
-                        # Folder Exists
-                        pass
-                else:
-                    _file = open(file_path, 'w')
-                    _file.write(template_zip.read(fn))
-                    _file.close()
+
+            args.download = detail['zip']
+            from initpy.creator import downloader
+            downloader(args)
+
 
         else:
             from initpy.creator import Creator
