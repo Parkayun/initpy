@@ -23,7 +23,7 @@ setup(
     author_email='iamparkayun@gmail.com',
     description='Generate Python project',
     long_description=long_description,
-    packages=['initpy'],
+    packages=['initpy', 'initpy.templates'],
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
