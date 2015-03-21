@@ -52,7 +52,7 @@ class Creator(object):
         except OSError:
             self.errors.append('Creating skipped: '+name+' already exists')
 
-    def create_module(self, _path, name, template=blank.blank):
+    def create_module(self, _path, name, template=blank.python):
         self.create_folder(_path, name)
 
         module_path = os.path.join(_path, name)

@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 
-blank = """
+python = """
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 """.strip()

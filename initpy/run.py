@@ -5,6 +5,8 @@ from __future__ import absolute_import
 from os import getcwd
 import argparse
 
+from initpy.prompt import color_print
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -19,14 +21,12 @@ def main():
     if args.name != '':
         if args.flask and args.tornado_web and args.falcon and args.download \
                 and args.hosted:
-            from initpy.prompt import color_print
             color_print('Please use one option', 'red')
             parser.print_help()
             return
 
         if args.flask or args.tornado_web or args.falcon:
-            end_message = "Complete!\nYou can install "
-            end_message += "\"pip install -r requirements/dev.txt\""
+            end_message = "You can install \"pip install -r requirements/dev.txt\""
 
             if args.flask:
                 end_message += "\nYou can run \"python manage.py run\""
@@ -42,13 +42,13 @@ def main():
                 creator = FalconCreator(getcwd())
 
             from initpy.prompt import color_input
-            module = color_input('Please input base module name [common]: ', 
+            module = color_input('Please input base module name [common]: ',
                     'yellow') or "common"
             creator.create_project(args.name, module)
 
-            from initpy.prompt import color_print
             color_print("\n".join(creator.errors), "red")
-            color_print(end_message, "blue")
+            color_print("Successfully created "+args.name+"!", "blue")
+            color_print(end_message, "magenta")
 
         elif args.download:
             from initpy.creator import downloader
@@ -63,18 +63,17 @@ def main():
                 from json import loads
                 detail = loads(res.replace('\n', ''))
             except HTTPError:
-                from initpy.prompt import color_print
                 color_print("Template not found!", "red")
                 return
             except ValueError:
-                from initpy.prompt import color_print
                 color_print("This template have a error!", "red")
                 return
 
             args.download = detail['zip']
+            color_print("Downloading "+detail['name'], "yellow")
             from initpy.creator import downloader
             downloader(args)
-
+            color_print("Successfully created "+args.name+"!", "blue")
 
         else:
             from initpy.creator import Creator
@@ -82,6 +81,7 @@ def main():
             if args.name.endswith('/'):
                 try:
                     creator.create_module(creator.root_path, args.name[:-1])
+                    color_print("Successfully created "+args.name+"!", "blue")
                 except IOError:
                     # file exists what contain same name
                     pass
@@ -93,9 +93,10 @@ def main():
                 except IndexError:
                     pass
                 if extension == 'py':
-                    from initpy.templates import blank
-                    tmpl = blank
+                    from initpy.templates.blank import python
+                    tmpl = python
                 creator.create_file(creator.root_path, args.name, tmpl)
+                color_print("Successfully created "+args.name+"!", "blue")
 
 
 if __name__ == '__main__':
