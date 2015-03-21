@@ -16,11 +16,11 @@ Example
 
    ~ $ cat flask/detail.json
    {
-        name: "flask",
-        desc: "basic flask skeleton",
-        author: "Ayun Park",
-        email: "iampakrayun@gmail.com",
-        repo: "https://github.com/devhot/initpy-flask",
-        zip: "https://github.com/devhot/initpy-flask/archive/master.zip"
+        "name": "flask",
+        "desc": "basic flask skeleton",
+        "author": "Ayun Park",
+        "email": "iampakrayun@gmail.com",
+        "repo": "https://github.com/devhot/initpy-flask",
+        "zip": "https://github.com/devhot/initpy-flask/archive/master.zip"
     }
 
