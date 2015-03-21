@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+
+
 class InvalidFileName(Exception):
     """Base class for Invalid File name"""
 

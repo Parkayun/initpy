@@ -1,10 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from string import Template
 
 
 app_init = Template("""
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from flask import Flask
 
@@ -19,7 +19,7 @@ def create_app():
 
 
 manager = """
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from flask.ext.script import Manager
 
@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
 
 module_init = Template("""
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from flask import Blueprint
 
@@ -53,7 +53,7 @@ from . import views
 
 
 module_views = Template("""
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from flask import render_template
 

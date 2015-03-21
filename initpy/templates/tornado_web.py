@@ -1,10 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from string import Template
 
 
 tornado_app = """
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import sys
 
@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
 
 tornado_handler = """
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import tornado.web
 
@@ -55,7 +55,7 @@ class IndexHandler(tornado.web.RequestHandler):
 
 
 tornado_urls = Template("""
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from handlers.${module} import IndexHandler
 

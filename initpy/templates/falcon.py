@@ -1,10 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from string import Template
 
 
 app_init = Template("""
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import falcon
 
@@ -24,7 +24,7 @@ def create_app():
 
 
 manager = """
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from wsgiref import simple_server
 
@@ -42,14 +42,14 @@ if __name__ == '__main__':
 
 
 resource_init = Template("""
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from .${module} import ${module_title}Resource
 """.strip())
 
 
 resource_controller = Template("""
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import falcon
 
