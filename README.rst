@@ -14,7 +14,7 @@ Generate `Python`_ project.
 
 
 Installation
--------------
+------------
 
 .. sourcecode:: bash
 
@@ -29,77 +29,15 @@ or can use pip
 
 Quick start
 -----------
-Create single Python file.
 
 .. sourcecode:: bash
 
-   ~ $ init.py foo.py
-   ~ $ cat foo.py
-   #!/usr/bin/python
-   # -*- coding:utf-8 -*-
+   ~ $ init.py foo.py             # Create single Python file.
+   ~ $ init.py foo/               # Create Python Module.
+   ~ $ init.py -f foo             # Create Flask project.
+   ~ $ init.py -tw foo            # Create Tornado web project.
+   ~ $ init.py -fc foo            # Create Falcon project.
+   ~ $ init.py -hd flask foo      # Create project from 3rd-Party template.
 
-Create Python Module.
 
-.. sourcecode:: bash
-   
-   ~ $ init.py foo/
-   ~ $ tree foo/
-   foo/
-   └── __init__.py
-
-Create Flask project.
-
-.. sourcecode:: bash
-   
-   ~ $ init.py -f bar
-   ~ $ tree bar/
-   bar/
-    ├── app
-    │   ├── __init__.py
-    │   ├── common
-    │   │   ├── __init__.py
-    │   │   ├── models.py
-    │   │   └── views.py
-    │   ├── static
-    │   └── templates
-    │       ├── base.html
-    │       └── common
-    │           └── index.html
-    ├── manage.py
-    └── requirements
-        └── dev.txt
-
-Create Tornado web project.
-
-.. sourcecode:: bash
-   
-   ~ $ init.py -tw bar
-   ~ $ tree bar/
-   bar/
-    ├── app.py
-    ├── handlers
-    │   ├── __init__.py
-    │   └── common.py
-    ├── requirements
-    │   └── dev.txt
-    └── urls.py
-
-Create Falcon project.
-
-.. sourcecode:: bash
-
-   ~ $ init.py -fc bar
-   ~ $ tree bar/
-   bar/
-    ├── app
-    │   ├── __init__.py
-    │   ├── resources
-    │   │   ├── __init__.py
-    │   │   └── common.py
-    │   ├── middleware
-    │   │   └── __init__.py
-    │   └── models
-    │       └── __init__.py
-    ├── manage.py
-    └── requirements
-        └── dev.txt
+More detail in `docs <http://initpy.readthedocs.org/en/latest/>`_.
