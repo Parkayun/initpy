@@ -42,7 +42,7 @@ Can use this option with --tornado-web or -tw.
 
 .. sourcecode:: bash
 
-    ~ $ init.py --tornado_web foo
+    ~ $ init.py --tornado-web foo
     Please input base module name [common]: bar
 
     Successfully created foo!
@@ -68,7 +68,7 @@ Can use this option with --falcon or -fc.
 
 .. sourcecode:: bash
 
-    ~ $ init.py --tornado_web foo
+    ~ $ init.py --falcon foo
     Please input base module name [common]: bar
 
     Successfully created foo!
