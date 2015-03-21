@@ -40,4 +40,4 @@ Quick start
    ~ $ init.py -hd flask foo      # Create project from 3rd-Party template.
 
 
-More detail in `docs <http://initpy.readthedocs.org/en/latest/>`_.
+More details in `docs <http://initpy.readthedocs.org/en/latest/>`_.
