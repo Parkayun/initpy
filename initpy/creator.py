@@ -78,7 +78,7 @@ class FlaskCreator(Creator):
                          flask.module_init.substitute(module=name), False)
         self.create_file(module_path, "views.py", 
                          flask.module_views.substitute(module=name))
-        self.create_file(module_path, "models.py", blank.blank)
+        self.create_file(module_path, "models.py", blank.python)
 
     def create_templates(self, _path, module):
         self.create_folder(_path, "templates")
@@ -154,13 +154,13 @@ class FalconCreator(Creator):
     def create_models(self, _path, name):
         self.create_module(_path, "models")
         models_path = os.path.join(_path, "models")
-        self.create_file(models_path, "__init__.py", blank.blank)
-        self.create_file(models_path, "{}.py".format(name), blank.blank)
+        self.create_file(models_path, "__init__.py", blank.python)
+        self.create_file(models_path, "{}.py".format(name), blank.python)
 
     def create_middleware(self, _path):
         self.create_module(_path, "middleware")
         middleware_path = os.path.join(_path, "middleware")
-        self.create_file(middleware_path, "__init__.py", blank.blank)
+        self.create_file(middleware_path, "__init__.py", blank.python)
 
     def create_requirements(self, _path):
         self.create_folder(_path, "requirements")
