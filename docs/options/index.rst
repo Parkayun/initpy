@@ -62,7 +62,7 @@ Can use this option with --tornado-web or -tw.
 falcon
 ------
 
-tornado web option can easily create `falcon <http://falconframework.org/>`_ project.
+falcon option can easily create `falcon <http://falconframework.org/>`_ project.
 
 Can use this option with --falcon or -fc.
 
