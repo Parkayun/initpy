@@ -1,10 +1,10 @@
 initpy
 ======
 
-.. image:: https://pypip.in/v/initpy/badge.svg?style=flat
+.. image:: https://img.shields.io/pypi/v/initpy.svg?style=flat
    :target: https://pypi.python.org/pypi/initpy/
    :alt: Latest Version
-.. image:: https://pypip.in/download/initpy/badge.svg?period=month
+.. image:: https://img.shields.io/pypi/dm/initpy.svg
    :target: https://pypi.python.org/pypi/initpy/
    :alt: Downloads
 .. image:: https://readthedocs.org/projects/initpy/badge/?version=latest
