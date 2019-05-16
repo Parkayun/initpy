@@ -10,3 +10,4 @@ if PY_VER == 2:
     input = raw_input
 else:
     from io import StringIO
+    input = input
